@@ -1,3 +1,6 @@
 .metadata/
 ppmtool\target/
 .settings/
+.classpath/
+.project/
+target/
