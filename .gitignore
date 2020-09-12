@@ -4,3 +4,6 @@ ppmtool\target/
 .classpath/
 .project/
 target/
+.idea/
+ppmtool\.idea/
+ppmtool\ppmtool.iml/
