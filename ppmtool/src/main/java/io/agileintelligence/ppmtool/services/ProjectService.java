@@ -1,5 +1,6 @@
 package io.agileintelligence.ppmtool.services;
 
+import io.agileintelligence.ppmtool.exceptions.ProjectIdException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +14,15 @@ public class ProjectService {
 	private ProjectRepository projectRepository;
 	
 	public Project saveOrUpdate(Project project) {
+
+		try{
+			project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+			return projectRepository.save(project);
+		}
+		catch (Exception ex){
+			throw new ProjectIdException("Project Id "+project.getProjectIdentifier().toUpperCase()+" already Exists !!");
+		}
 		
-		//Logic
-		
-		return projectRepository.save(project);
+
 	}
 }
