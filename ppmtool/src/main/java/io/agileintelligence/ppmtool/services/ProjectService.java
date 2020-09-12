@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import io.agileintelligence.ppmtool.domain.Project;
 import io.agileintelligence.ppmtool.repositories.ProjectRepository;
 
+import java.util.Objects;
+
 @Service
 public class ProjectService {
 
@@ -22,7 +24,14 @@ public class ProjectService {
 		catch (Exception ex){
 			throw new ProjectIdException("Project Id "+project.getProjectIdentifier().toUpperCase()+" already Exists !!");
 		}
-		
+	}
 
+	public Project findProjectByIdentifier(String projectId){
+
+		Project project = projectRepository.findByProjectIdentifier(projectId);
+		if(Objects.isNull(project)){
+			throw new ProjectIdException("Project Id "+projectId+" does not Exist !!");
+		}
+		return project;
 	}
 }
