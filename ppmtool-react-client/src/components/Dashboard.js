@@ -11,6 +11,8 @@ class Dashboard extends Component {
   }
 
   render() {
+    const { projects } = this.props.project;
+
     return (
       <div className="projects">
         <div className="container">
@@ -21,7 +23,9 @@ class Dashboard extends Component {
               <CreateProjectButton />
               <br />
               <hr />
-              <ProjectItem />
+              {projects.map((project) => (
+                <ProjectItem project={project} />
+              ))}
             </div>
           </div>
         </div>
@@ -31,12 +35,12 @@ class Dashboard extends Component {
 }
 
 Dashboard.propTypes = {
-  projects: PropTypes.object.isRequired,
+  project: PropTypes.object.isRequired,
   getProjects: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  projects: state.projects,
+  project: state.project,
 });
 
 export default connect(mapStateToProps, { getProjects })(Dashboard);
