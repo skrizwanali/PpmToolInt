@@ -17,10 +17,6 @@ class AddProject extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   this.setState({ errors: nextProps.errors });
-  // }
-
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
